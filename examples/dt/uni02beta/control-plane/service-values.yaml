@@ -8,6 +8,7 @@ metadata:
     config.kubernetes.io/local-config: "true"
 
 data:
+  preserveJobs: false
   cinderVolumes:
     ontap-nfs:
       customServiceConfig: |
@@ -86,17 +87,5 @@ data:
     databaseInstance: openstack
     glanceAPIs:
       default:
-        preserveJobs: false
         replicas: 1
         type: single
-    extraMounts:
-      - extraVol:
-          - extraVolType: Nfs
-            mounts:
-              - mountPath: /var/lib/glance/images
-                name: nfs
-            volumes:
-              - name: nfs
-                nfs:
-                  path: _replaced_
-                  server: _replaced_
