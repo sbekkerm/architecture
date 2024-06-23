@@ -23,8 +23,8 @@ data:
         target_port=4420
         target_prefix=nvme-subsystem-1
         nvmeof_conn_info_version=2
-        target_ip_address=172.18.0.5
-        target_secondary_ip_addresses = 172.19.0.5
+        target_ip_address=172.18.0.10
+        target_secondary_ip_addresses = 172.19.0.10
 
   cinderBackup:
     customServiceConfig: |
@@ -42,8 +42,8 @@ data:
   glance:
     customServiceConfig: |
       [DEFAULT]
+      debug = True
       enabled_backends = default_backend:cinder
-      debug = true
       [glance_store]
       default_backend = default_backend
       [default_backend]
@@ -58,8 +58,6 @@ data:
       # cinder_use_multipath = true
       [oslo_concurrency]
       lock_path = /var/lib/glance/tmp
-      [database]
-      mysql_wsrep_sync_wait = 1
     default:
       replicas: 1
 
